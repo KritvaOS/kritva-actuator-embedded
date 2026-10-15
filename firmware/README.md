@@ -2,9 +2,9 @@
 
 Actuator motor-control firmware. Owner: **Electronics/Embedded Intern**. Reviewer for safety-relevant code (fault manager, limits, state machine, watchdog supervision): **Independent Electrical/Firmware Reviewer**.
 
-- Requirements: [requirements/FIRMWARE_REQUIREMENTS.md](../requirements/FIRMWARE_REQUIREMENTS.md)
+- Requirements: [requirements/FIRMWARE_REQUIREMENTS.md](https://github.com/KritvaOS/kritva-actuator/blob/main/requirements/FIRMWARE_REQUIREMENTS.md)
 - Design: [docs/firmware/FIRMWARE_ARCHITECTURE.md](../docs/firmware/FIRMWARE_ARCHITECTURE.md), [MOTOR_CONTROL.md](../docs/firmware/MOTOR_CONTROL.md), [CALIBRATION_PROCEDURE.md](../docs/firmware/CALIBRATION_PROCEDURE.md)
-- Interfaces: [docs/interfaces/](../docs/interfaces/)
+- Interfaces: [docs/interfaces/](https://github.com/KritvaOS/kritva-actuator/tree/main/docs/interfaces)
 
 | Folder | Contents |
 |---|---|
