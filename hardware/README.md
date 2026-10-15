@@ -2,7 +2,7 @@
 
 Electronics implementation of the Kritva Actuator. Owner: **Electronics/Embedded Intern**. Reviewer for safety-critical items (power stage, protections, e-stop path): **Independent Electrical/Firmware Reviewer**.
 
-Design documents: [docs/electronics/](../docs/electronics/). Requirements: [requirements/ELECTRICAL_REQUIREMENTS.md](../requirements/ELECTRICAL_REQUIREMENTS.md).
+Design documents: [docs/electronics/](../docs/electronics/). Requirements: [requirements/ELECTRICAL_REQUIREMENTS.md](https://github.com/KritvaOS/kritva-actuator/blob/main/requirements/ELECTRICAL_REQUIREMENTS.md).
 
 | Folder | Contents |
 |---|---|
@@ -13,7 +13,7 @@ Design documents: [docs/electronics/](../docs/electronics/). Requirements: [requ
 | `power_stage/` | Inverter, gate-driver and input-protection design notes and calculations (MOSFET losses, shunt sizing, fuse) |
 | `sensing/` | Current sensing, encoder interfaces, temperature sensing, output-encoder PCB |
 | `connectors/` | Connector pin-outs and cable drawings (power, motor, feedback, encoder, CAN, e-stop) |
-| `bom/ELECTRICAL_BOM.csv` | Electrical BOM; schema in [scripts/bom/README.md](../scripts/bom/README.md); run `make check-bom` |
+| `bom/ELECTRICAL_BOM.csv` | Electrical BOM; schema in [scripts/bom/README.md](https://github.com/KritvaOS/kritva-actuator/blob/main/scripts/bom/README.md); run `make check-bom` |
 
 ## Part numbering
 
