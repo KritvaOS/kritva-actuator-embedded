@@ -1,1 +1,17 @@
 item_id,milestone,category,description,manufacturer,manufacturer_part_number,supplier,supplier_part_number,quantity,unit,unit_cost_inr,extended_cost_inr,cost_status,lead_time_days,status,owner,notes
+EB-001,A0,Development board,"Motor-control development board (STM32G4-class preferred); candidates: B-G431B-ESC1, NUCLEO-G474RE + X-NUCLEO-IHM08M1-class, ODrive-class",TBD,TBD,TBD,TBD,1,pcs,5000,5000,ESTIMATE,,CANDIDATE,Electronics/Embedded Intern,"Planning allowance from the ₹3,000-₹5,000 target (upper value); selection in ELECTRONICS_ARCHITECTURE §6 (ACT-DEC-005)"
+EB-002,A0,Encoder,"Output-side absolute magnetic encoder IC/board plus diametric magnet (candidates: AS5047P / AS5048A / MT6835; verify)",TBD,TBD,TBD,TBD,1,set,1500,1500,ESTIMATE,,CANDIDATE,Electronics/Embedded Intern,"Allowance from the ₹500-₹1,500 target (upper value)"
+EB-003,A0,Power,"Bench PSU wiring, inline fuse holder and fuses, DC-rated e-stop relay, latching e-stop button, connectors",TBD,TBD,TBD,TBD,1,lot,2500,2500,ESTIMATE,,CANDIDATE,Electronics/Embedded Intern,"Allowance from the ₹1,500-₹2,500 target (upper value); excludes the bench PSU itself (lab equipment)"
+EB-004,A0,Miscellaneous,"Cables, crimp terminals, heat-shrink, standoffs, USB cable",TBD,TBD,TBD,TBD,1,lot,2000,2000,ESTIMATE,,CANDIDATE,Electronics/Embedded Intern,"Allowance from the ₹1,000-₹2,000 target (upper value)"
+EB-005,A1,MCU,"Motor-control MCU, STM32G4 family (candidate: STM32G431 or STM32G474; ACT-DEC-004 proposed)",STMicroelectronics,TBD,TBD,TBD,1,pcs,,,TBD,,CANDIDATE,Electronics/Embedded Intern,For the custom PCB
+EB-006,A1,Gate driver,"3-phase gate driver with dead time, UVLO, fault output",TBD,TBD,TBD,TBD,1,pcs,,,TBD,,CANDIDATE,Electronics/Embedded Intern,
+EB-007,A1,MOSFET,"N-channel MOSFET 40-60 V, low RDS(on), rated >=1.5x peak phase current",TBD,TBD,TBD,TBD,6,pcs,,,TBD,,CANDIDATE,Electronics/Embedded Intern,Sized from the motor Kt (MOTOR_CONTROLLER_SPECIFICATION §2)
+EB-008,A1,Current sense,"Low-side shunt resistors (Kelvin) and differential amplifiers",TBD,TBD,TBD,TBD,3,set,,,TBD,,CANDIDATE,Electronics/Embedded Intern,
+EB-009,A1,Protection,"Overcurrent comparator, TVS, reverse-polarity ideal-diode controller + FET, input fuse",TBD,TBD,TBD,TBD,1,set,,,TBD,,CANDIDATE,Electronics/Embedded Intern,SAF-REQ-030/033/034
+EB-010,A1,Power,"5 V buck regulator and 3.3 V LDO, bulk electrolytic + film capacitors (>=40 V)",TBD,TBD,TBD,TBD,1,set,,,TBD,,CANDIDATE,Electronics/Embedded Intern,
+EB-011,A1,Communication,"CAN transceiver (CAN FD capable preferred), selectable 120 ohm termination, ESD protection",TBD,TBD,TBD,TBD,1,set,,,TBD,,CANDIDATE,Electronics/Embedded Intern,
+EB-012,A1,Sensing,"NTC thermistors (MOSFET, board), Vbus divider, motor thermistor interface",TBD,TBD,TBD,TBD,1,set,,,TBD,,CANDIDATE,Electronics/Embedded Intern,
+EB-013,A1,Connectors,"Locking connectors: power, motor phases, feedback, output encoder, CAN x2, e-stop, SWD header, USB-C",TBD,TBD,TBD,TBD,1,set,,,TBD,,CANDIDATE,Electronics/Embedded Intern,
+EB-014,A1,PCB,"Custom controller PCB fabrication and assembly (4-layer, 2 oz outer copper, TBC)",TBD,KA-ELE-0001,TBD,TBD,1,lot,,,TBD,,CANDIDATE,Electronics/Embedded Intern,Not a prerequisite for A0 (ACT-DEC-005)
+EB-015,A1,Communication,"USB-CAN adapter for the host PC",TBD,TBD,TBD,TBD,1,pcs,,,TBD,,CANDIDATE,Project Lead,Host tooling
+EB-016,A1,Encoder,"Stationary output-encoder PCB (small board near the output bearing)",In-house design,KA-ELE-0002,TBD,TBD,1,pcs,,,TBD,,CANDIDATE,Electronics/Embedded Intern,
