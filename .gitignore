@@ -1,0 +1,90 @@
+# Kritva Actuator .gitignore
+# Proprietary and confidential. Copyright (c) 2026 Kritvaos.
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.vscode/*
+!.vscode/settings.json.example
+.idea/
+*.code-workspace
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# ---- Firmware build outputs ----
+build/
+firmware/**/build/
+firmware/**/Debug/
+firmware/**/Release/
+cmake-build-*/
+*.o
+*.obj
+*.d
+*.su
+*.map
+*.lst
+*.elf
+*.hex
+*.bin
+!results/**/reference/*.bin
+# STM32CubeIDE / Eclipse
+.metadata/
+.settings/
+*.launch
+# TI CCS
+.ccsproject
+targetConfigs/
+
+# ---- Mechanical CAD temporary / lock files ----
+~$*
+*.SLDLFP
+*.sldbak
+*.FCStd1
+*.FCBak
+*.bak
+*.tmp
+*.lck
+# Fusion 360 local caches
+*.f3d.tmp
+
+# ---- KiCad ----
+*-backups/
+fp-info-cache
+*.kicad_prl
+_autosave-*
+*.lck
+# Generated manufacturing outputs are committed only as released zips under manufacturing/
+hardware/**/gerbers_tmp/
+
+# ---- Test results ----
+# Raw high-rate logs (>~50 MB) go to the agreed storage; link them from results/
+results/**/raw/*.bin
+results/**/raw/*.dat
+*.tdms_index
+
+# ---- Misc ----
+*.log
+!results/**/*.log
+node_modules/
+
+# ---- Assistant / tool export folders (not canonical source; EXT-AUD-016) ----
+Claude outputs/
+
+# Build output
+build/
+*.elf
+*.bin
+*.hex
+*.map
