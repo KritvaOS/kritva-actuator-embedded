@@ -1,0 +1,11 @@
+task_id,legacy_id,title,execution,readiness,implementation_commit
+ACT-EMB-001,ACT-01-001,Define electrical and motor-control requirements,NOT_STARTED,PLANNABLE,
+ACT-EMB-002,ACT-01-002,Select the MCU and development board; bring up the motor and FOC on the development board,NOT_STARTED,PLANNABLE,
+ACT-EMB-002a,ACT-01-002a,Development board evaluation and decision,NOT_STARTED,PLANNABLE,
+ACT-EMB-002b,ACT-01-002b,"Motor characterisation (R, L, Kt, pole pairs, thermal)",NOT_STARTED,HARDWARE-BLOCKED,
+ACT-EMB-002c,ACT-01-002c,FOC current loop and calibration,NOT_STARTED,HARDWARE-BLOCKED,
+ACT-EMB-003,ACT-01-003,Integrate encoder feedback and implement joint control,NOT_STARTED,HARDWARE-BLOCKED,
+ACT-EMB-004,ACT-01-004,Diagnostics and fault handling,NOT_STARTED,HARDWARE-BLOCKED,
+ACT-EMB-005,ACT-01-005,Custom controller PCB (A1),NOT_STARTED,HARDWARE-BLOCKED,
+ACT-EMB-006,ACT-01-006,CAN communication firmware (A1),NOT_STARTED,PLANNABLE,
+ACT-EMB-007,ACT-01-007,"Firmware robustness, regression and release",NOT_STARTED,HARDWARE-BLOCKED,

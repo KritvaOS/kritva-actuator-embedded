@@ -1,0 +1,83 @@
+{
+  "schema_version": "2.0",
+  "workstream_id": "ACT_EMB",
+  "repo": "KritvaOS/kritva-actuator-embedded",
+  "source": {
+    "branch": "main",
+    "commit": "34c38e929da9b9dce94cb8803329e13ae4c698b9",
+    "tag": null
+  },
+  "tasks": [
+    {
+      "task_id": "ACT-EMB-001",
+      "execution": "NOT_STARTED",
+      "git_sync": "NOT_COMMITTED",
+      "readiness": "PLANNABLE",
+      "evidence": []
+    },
+    {
+      "task_id": "ACT-EMB-002",
+      "execution": "NOT_STARTED",
+      "git_sync": "NOT_COMMITTED",
+      "readiness": "PLANNABLE",
+      "evidence": []
+    },
+    {
+      "task_id": "ACT-EMB-002a",
+      "execution": "NOT_STARTED",
+      "git_sync": "NOT_COMMITTED",
+      "readiness": "PLANNABLE",
+      "evidence": []
+    },
+    {
+      "task_id": "ACT-EMB-002b",
+      "execution": "NOT_STARTED",
+      "git_sync": "NOT_COMMITTED",
+      "readiness": "HARDWARE-BLOCKED",
+      "evidence": []
+    },
+    {
+      "task_id": "ACT-EMB-002c",
+      "execution": "NOT_STARTED",
+      "git_sync": "NOT_COMMITTED",
+      "readiness": "HARDWARE-BLOCKED",
+      "evidence": []
+    },
+    {
+      "task_id": "ACT-EMB-003",
+      "execution": "NOT_STARTED",
+      "git_sync": "NOT_COMMITTED",
+      "readiness": "HARDWARE-BLOCKED",
+      "evidence": []
+    },
+    {
+      "task_id": "ACT-EMB-004",
+      "execution": "NOT_STARTED",
+      "git_sync": "NOT_COMMITTED",
+      "readiness": "HARDWARE-BLOCKED",
+      "evidence": []
+    },
+    {
+      "task_id": "ACT-EMB-005",
+      "execution": "NOT_STARTED",
+      "git_sync": "NOT_COMMITTED",
+      "readiness": "HARDWARE-BLOCKED",
+      "evidence": []
+    },
+    {
+      "task_id": "ACT-EMB-006",
+      "execution": "NOT_STARTED",
+      "git_sync": "NOT_COMMITTED",
+      "readiness": "PLANNABLE",
+      "evidence": []
+    },
+    {
+      "task_id": "ACT-EMB-007",
+      "execution": "NOT_STARTED",
+      "git_sync": "NOT_COMMITTED",
+      "readiness": "HARDWARE-BLOCKED",
+      "evidence": []
+    }
+  ],
+  "updated_at": "2026-10-16T08:19:40+05:30"
+}
