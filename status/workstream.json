@@ -1,5 +1,5 @@
 {
   "workstream_id": "ACT_EMB",
   "repo": "KritvaOS/kritva-actuator-embedded",
-  "_note": "workstream_id is provisional: not yet registered in kritva-program workstreams.json (see planning/v2/PROGRAM_CROSSWALK.csv in the parent). Mechanical work is on HOLD centrally."
+  "_note": "workstream_id is registered in kritva-program workstreams.json (D-034, 2026-10-17); see planning/v2/PROGRAM_CROSSWALK.csv in the parent. The mechanical HOLD (kritva-program D-003) was lifted for the actuator workstreams (actuator ACT-DEC-029, kritva-program D-051)."
 }

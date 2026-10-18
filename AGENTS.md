@@ -8,7 +8,7 @@ These instructions apply to the `kritva-actuator-embedded` repository, a child o
 - Passing firmware or unit checks is not evidence of physical safety. Do not invent hardware behaviour; mark simulated or mocked results as such.
 - The CAN protocol and interface are owned by the parent; do not redefine them here.
 
-- Mechanical work is on HOLD (D-003) until Dinesh explicitly lifts it. Do not start CAD release, procurement, fabrication or design freeze work, and do not treat any check in this repository as physical safety or design acceptance.
+- The mechanical HOLD (kritva-program D-003) was lifted by Dinesh in ACT-DEC-029 (2026-10-18). That does not authorise CAD release, procurement, fabrication or design freeze work by itself: these need Gate A and the pending decisions in the parent `planning/v1/DECISIONS.md`, with independent review (ACT-DEC-014). Fabrication starts only after Gate A passes plus the release and procurement gap (ACT-DEC-033). Do not treat any check in this repository as physical safety or design acceptance.
 - Status reports (`status/status.json`, schema 2.0) are planning-only. Regenerate them from `status/tasks.csv`; do not edit them by hand, and do not mark tasks accepted. Nothing here creates program credit.
 - Interface, CAN protocol, units and shared requirements are owned by the parent `kritva-actuator` repository (ICD at `docs/interfaces/`). Do not redefine them in a child repository.
 
