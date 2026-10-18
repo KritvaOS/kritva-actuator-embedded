@@ -27,6 +27,7 @@ These instructions apply to the `kritva-actuator-embedded` repository, a child o
 - Work on a branch and open a pull request. Do not push to `main`. Do not force-push shared branches or rewrite history without the owner's explicit approval.
 - Use short imperative messages in the repository's existing style (`type(scope): summary`).
 - Do not add `Claude-Session:` or session-URL trailers to commit messages or pull request descriptions. The `commit-message-check` workflow rejects them. A `Co-Authored-By:` line is allowed.
+- Commit and PR standard (kritva-program D-053, v2/planning/ACCEPTANCE_STANDARD.md section 4): `type(scope): summary` (types feat, fix, docs, refactor, test, build, ci, chore, perf, revert, security) with one `Task:` or `Tasks:` footer, `Tasks: None (reason)` only on a docs or chore commit that implements no task; the merge method is a merge commit; PR text follows `.github/PULL_REQUEST_TEMPLATE.md`. Check with `python3 scripts/security/check_commit_format.py --range origin/main..HEAD`. This repository has not adopted the format in CI yet (PD-019), so the check is advisory here.
 - `main` is protected by a ruleset that requires `secret-scan`, `commit-message-check` and Code Owner review (owner statement, D-040; not independently verified). With one owner, the PR author cannot self-approve: ask the owner to merge using the bypass or add a second reviewer.
 
 ## When unsure
