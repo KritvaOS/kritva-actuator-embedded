@@ -259,7 +259,7 @@ CI runs four separate workflows (below). None is a firmware build or a hardware 
 | Workflow | Trigger | What it runs |
 |---|---|---|
 | `checks` | push to `main`; pull requests | `make check` (electrical BOM schema and status only) |
-| `commit-message-check` | pull requests | the commit checker's unit tests, then the checker on the commits in the pull request (rejects session trailers and links only) |
+| `commit-message-check` | pull requests | the unit tests of both commit checkers, then `check_commit_messages.py` on the commits in the pull request (rejects session trailers and links) and `check_commit_format.py` on the same commits (the D-053 form; blocking since D-070) |
 | `readme-check` | pull requests; push to `main` | the README checker's unit tests, then `python3 scripts/check_readme.py README.md --root .` (structure, metadata and local links only; not a required check yet, D-067) |
 | `secret-scan` | push to `main`; pull requests; manual dispatch | gitleaks over the git history |
 
@@ -290,7 +290,7 @@ Firmware unit tests (`tests/unit/`), per-variant builds and bench tests do not e
 | Failed check | What it ran | Reproduce locally | Usual cause and fix |
 |---|---|---|---|
 | `checks` | `make check`: electrical BOM schema, status | `make check` (or `make check-bom`, `make check-status`) | `check-bom`: wrong column or duplicate item ID in `hardware/bom/ELECTRICAL_BOM.csv`. `check-status`: `status/status.json` is out of date; run `python3 scripts/status/gen_status.py --root .` and commit the result (never edit it by hand) |
-| `commit-message-check` | Unit tests of the checker, then the checker on every commit in the PR | `python3 -m unittest discover -s tests/commit_message_check -v` then `python3 scripts/security/check_commit_messages.py --range origin/main..HEAD` | A commit carries a `Claude-Session:` trailer or session link. Amend the latest unpushed commit (`git commit --amend`). For commits already pushed, ask the owner before rewriting history |
+| `commit-message-check` | Unit tests of both commit checkers, then both checkers on every commit in the PR | `python3 -m unittest discover -s tests/commit_message_check -v` then `python3 scripts/security/check_commit_messages.py --range origin/main..HEAD` and `python3 scripts/security/check_commit_format.py --range origin/main..HEAD` | A commit carries a `Claude-Session:` trailer or session link, or its message breaks the format (header `type(scope): summary`, one `Task:` or `Tasks:` footer; the output names the problem). Amend the latest unpushed commit (`git commit --amend`). For commits already pushed, ask the owner before rewriting history |
 | `readme-check` | Unit tests of the README checker, then the checker on `README.md` | `python3 -m unittest discover -s tests/readme_check -v` then `make check-readme` | A required heading, metadata field or local link is missing or broken in `README.md`; `make check-readme` prints the message, fix the README. It is not a required check yet (D-067) |
 | `secret-scan` | gitleaks 8.18.4 over the full git history | Install gitleaks 8.18.4, then `gitleaks detect --source . --redact --verbose --exit-code 1` | A credential, key or token is in the history. Do not add an allowlist entry. Tell the Security Owner (Dinesh) at once; the secret must be revoked or rotated, and removing it in a later commit is not enough |
 
@@ -298,7 +298,7 @@ There is no firmware build job in this repository yet (it is planned with `firmw
 
 ## 12. Git Workflow and Review
 
-Repository convention: either subject form below (a task-ID prefix, or `type(scope): summary`; parent `docs/standards/PROGRAM_ALIGNMENT.md`, section 3). CI enforces only that a commit carries no `Claude-Session:` trailer or `claude.ai/code/session` link; neither subject form is checked by CI. Local style checks (`scripts/security/check_commit_format.py`) are advisory. The Kritva commit standard in kritva-program (D-053) is NOT adopted here (PD-019). `AGENTS.md` names the `type(scope): summary` form; the task-ID prefix is also accepted.
+Controlling statement: the Kritva commit standard (kritva-program D-053), adopted here under D-070, which completes PD-019: header `type(scope): summary` (types feat, fix, docs, refactor, test, build, ci, chore, perf, revert, security; at most 90 characters; an optional `[TASK-ID]` suffix must match the footer), exactly one `Task:` or `Tasks:` footer line, and `Tasks: None (reason)` only on a docs or chore commit that implements no task; merge by merge commit. `AGENTS.md` repeats it. CI (`commit-message-check`) enforces it with `scripts/security/check_commit_format.py` and also rejects `Claude-Session:` trailers and `claude.ai/code/session` links. The standard applies to new commits; history is not rewritten, and the older task-ID subject form (`ACT-EMB-003: ...`) is no longer accepted for new commits.
 
 ### Branch names
 
@@ -314,21 +314,22 @@ Examples: `feat/ACT-EMB-003-encoder-rollover`, `docs/ACT-EMB-004-fault-table`, `
 
 ### Commit messages
 
-Use a short imperative subject in one of these forms (parent `docs/standards/PROGRAM_ALIGNMENT.md`, section 3):
+Use the Kritva commit standard (kritva-program D-053, adopted under D-070):
 
 ```text
-ACT-EMB-003: add encoder rollover handling        <- preferred when the work belongs to a task
-type(scope): summary                            <- repository style, for example chore(status): regenerate status.json
+feat(embedded): add shaft stress check inputs
+
+Task: ACT-EMB-003
 ```
 
-Suggested `type` values: `feat`, `fix`, `docs`, `test`, `chore`, `hw` (schematic, PCB or BOM). One atomic change per commit. Do not claim a test, review or acceptance that did not happen. Do not rewrite or renumber history.
+A commit that implements no task and only changes documents or housekeeping uses `docs` or `chore` and `Tasks: None (reason)`. Allowed `type` values are fixed by the checker: `feat`, `fix`, `docs`, `refactor`, `test`, `build`, `ci`, `chore`, `perf`, `revert`, `security`; use `feat` or `fix` for CAD, drawing, schematic, PCB or BOM changes. One atomic change per commit. Do not claim a test, review or acceptance that did not happen. Do not rewrite or renumber history.
 
-What CI **does** enforce (`commit-message-check`): a commit must not contain a `Claude-Session:` trailer or a `claude.ai/code/session` link. A `Co-Authored-By:` line is allowed. Everything else above is a convention.
+What CI **does** enforce (`commit-message-check`): the format above, and that a commit has no `Claude-Session:` trailer or `claude.ai/code/session` link. A `Co-Authored-By:` line is allowed. Branch names and the rest of this section are conventions.
 
 Optionally, to catch a rejected message before pushing, install a local safeguard (it modifies `.git/hooks/commit-msg` in your clone and does not change CI policy):
 
 ```bash
-printf '#!/bin/sh\npython3 scripts/security/check_commit_messages.py --file "$1"\n' > .git/hooks/commit-msg
+printf '#!/bin/sh\npython3 scripts/security/check_commit_messages.py --file "$1" && python3 scripts/security/check_commit_format.py --file "$1"\n' > .git/hooks/commit-msg
 chmod +x .git/hooks/commit-msg
 ```
 
