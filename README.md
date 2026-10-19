@@ -355,7 +355,7 @@ The lifecycle status ACTIVE describes this repository, not hardware readiness. L
 
 The independent review (ACT-DEC-014, ACT-DEC-015) applies throughout. Power-stage and motor-control safety are not self-approved. Loaded and fault tests run only on a restrained, guarded, instrumented fixture; mark simulated or mocked results as such. The mechanical HOLD lifted by ACT-DEC-029 does not authorise fabrication, procurement or loaded testing on its own.
 
-**Reporting a vulnerability:** follow [`SECURITY.md`](SECURITY.md); its reporting route is not yet verified as a dedicated private channel, and it says so. Never put details of an unfixed vulnerability in a public issue, pull request or commit message.
+**Reporting a vulnerability:** follow [SECURITY.md](SECURITY.md). It names GitHub private vulnerability reporting as the first route and gives a direct-contact fallback. The Security Owner reports having tested the reporting route on 18 October 2026 (D-068); that is ATTESTED, not independently verified, and nothing here promises a response time. Never put details of an unfixed vulnerability in a public issue, pull request or commit message.
 
 - Never commit secrets, private keys, tokens, passwords, production data or personal data. Use obviously fake values and mark them as fake.
 - If a secret is committed by mistake, tell the Security Owner at once; removing it in a later commit does not make it safe. Do not add `secret-scan` allowlist entries.
