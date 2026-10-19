@@ -33,7 +33,7 @@ It does not own the common interface (`ACTUATOR_INTERFACE.md`), the CAN protocol
 
 ## 2. Position in the KritvaOS Ecosystem
 
-This is the embedded child of the actuator family. The parent `kritva-actuator` tracks it as a submodule (`embedded/kritva-actuator-embedded`) and pins a reviewed commit; only the Project Lead updates that pointer. Work here goes on a branch in this repository; do not push to the parent. The roster and order of repositories in the program are owned by kritva-program (`v2/planning/repo-pipeline.json`), not by this README.
+This is the embedded child of the actuator family. The parent `kritva-actuator` is intended to track it as a submodule (`embedded/kritva-actuator-embedded`) and pin a reviewed commit; only the Project Lead updates that pointer. This README does not verify the current pointer. Four states are different: submodule configured in the parent's `.gitmodules`, pointer recorded by a parent commit, checkout initialised in a clone, and implementation verified. Work here goes on a branch in this repository; do not push to the parent. The roster and order of repositories in the program are owned by kritva-program (`v2/planning/repo-pipeline.json`), not by this README.
 
 ## 3. Architecture
 
@@ -55,7 +55,7 @@ Use the repository baseline column for sizing and reviews. The wider range is a 
 
 ## 4. Documents to Read First
 
-Read in this order. "parent" means a path inside the `kritva-actuator` parent repository (clone it with `--recurse-submodules`, see below); "this repo" means this repository. A label names a role, not an approval; the status a document declares is what counts. Values marked PROPOSED, provisional or not yet defined are not approved requirements. Tool flows are proposed, not frozen. Passing checks does not close a gate.
+Read in this order. "parent" means a path inside the `kritva-actuator` parent repository (clone it with `--recurse-submodules`, see below); "this repo" means this repository. A label names a role, not an approval; the status a document declares is what counts, and each row shows the role first and the status after it. AUTHORITATIVE here marks the intended source of detail, not an approved baseline: implementation, purchasing, fabrication and release stay subject to the recorded decisions and gates. Values marked PROPOSED, provisional or not yet defined are not approved requirements. Links to the parent point at its `main` branch (current links); the parent record's own status and revision control, not this README. Tool flows are proposed, not frozen. Passing checks does not close a gate.
 
 ### A. Before you start (first week)
 
@@ -89,12 +89,12 @@ Read in this order. "parent" means a path inside the `kritva-actuator` parent re
 
 | # | Document | Where | Label, status | What to take from it |
 |---|---|---|---|---|
-| 1 | [`docs/electronics/ELECTRONICS_ARCHITECTURE.md`](docs/electronics/ELECTRONICS_ARCHITECTURE.md) | this repo | AUTHORITATIVE for this repository's design; status per file (ELECTRONICS_ARCHITECTURE is OPEN) | Controller electronics architecture |
-| 2 | [`docs/electronics/MOTOR_CONTROLLER_SPECIFICATION.md`](docs/electronics/MOTOR_CONTROLLER_SPECIFICATION.md) | this repo | AUTHORITATIVE for this repository's design; status per file (ELECTRONICS_ARCHITECTURE is OPEN) | Motor controller specification |
-| 3 | [`docs/electronics/HARDWARE_BRINGUP.md`](docs/electronics/HARDWARE_BRINGUP.md) | this repo | AUTHORITATIVE for this repository's design; status per file (ELECTRONICS_ARCHITECTURE is OPEN) | Bring-up steps for A0 and for the custom PCB |
-| 4 | [`docs/firmware/FIRMWARE_ARCHITECTURE.md`](docs/firmware/FIRMWARE_ARCHITECTURE.md) | this repo | AUTHORITATIVE for this repository's design; status per file (ELECTRONICS_ARCHITECTURE is OPEN) | Firmware layers, loop rates, variant configuration |
-| 5 | [`docs/firmware/MOTOR_CONTROL.md`](docs/firmware/MOTOR_CONTROL.md) | this repo | AUTHORITATIVE for this repository's design; status per file (ELECTRONICS_ARCHITECTURE is OPEN) | FOC, current loop, position/speed/torque control |
-| 6 | [`docs/firmware/CALIBRATION_PROCEDURE.md`](docs/firmware/CALIBRATION_PROCEDURE.md) | this repo | AUTHORITATIVE for this repository's design; status per file (ELECTRONICS_ARCHITECTURE is OPEN) | Calibration steps and records |
+| 1 | [`docs/electronics/ELECTRONICS_ARCHITECTURE.md`](docs/electronics/ELECTRONICS_ARCHITECTURE.md) | this repo | AUTHORITATIVE as the intended source of design detail; status per file, none approved (ELECTRONICS_ARCHITECTURE: OPEN) | Controller electronics architecture |
+| 2 | [`docs/electronics/MOTOR_CONTROLLER_SPECIFICATION.md`](docs/electronics/MOTOR_CONTROLLER_SPECIFICATION.md) | this repo | AUTHORITATIVE as the intended source of design detail; status per file, none approved (ELECTRONICS_ARCHITECTURE: OPEN) | Motor controller specification |
+| 3 | [`docs/electronics/HARDWARE_BRINGUP.md`](docs/electronics/HARDWARE_BRINGUP.md) | this repo | AUTHORITATIVE as the intended source of design detail; status per file, none approved (ELECTRONICS_ARCHITECTURE: OPEN) | Bring-up steps for A0 and for the custom PCB |
+| 4 | [`docs/firmware/FIRMWARE_ARCHITECTURE.md`](docs/firmware/FIRMWARE_ARCHITECTURE.md) | this repo | AUTHORITATIVE as the intended source of design detail; status per file, none approved (ELECTRONICS_ARCHITECTURE: OPEN) | Firmware layers, loop rates, variant configuration |
+| 5 | [`docs/firmware/MOTOR_CONTROL.md`](docs/firmware/MOTOR_CONTROL.md) | this repo | AUTHORITATIVE as the intended source of design detail; status per file, none approved (ELECTRONICS_ARCHITECTURE: OPEN) | FOC, current loop, position/speed/torque control |
+| 6 | [`docs/firmware/CALIBRATION_PROCEDURE.md`](docs/firmware/CALIBRATION_PROCEDURE.md) | this repo | AUTHORITATIVE as the intended source of design detail; status per file, none approved (ELECTRONICS_ARCHITECTURE: OPEN) | Calibration steps and records |
 | 7 | [`firmware/README.md`](firmware/README.md) and [`hardware/README.md`](hardware/README.md) | this repo | REFERENCE | Layout of firmware and hardware folders |
 
 ### D. Standards and tool flow
@@ -135,16 +135,16 @@ Labels: INPUT is edited by hand and read by a tool or review; GENERATED is writt
 
 | Path | Content | Label, status | Responsible | Notes |
 |---|---|---|---|---|
-| `firmware/` | `platform/` (the only place for vendor or MCU-specific code), `foc/`, `motor_control/`, `encoder/`, `joint_control/`, `diagnostics/`, `communication/`, `variants/` (per-variant configuration for S, M, L) | INPUT (firmware source; none committed yet) | Embedded owner | Safety-relevant code (fault manager, limits, state machine, watchdog) needs the Independent Electrical/Firmware Reviewer. See `firmware/README.md` |
+| `firmware/` | `platform/` (the only place for vendor or MCU-specific code), `foc/`, `motor_control/`, `encoder/`, `joint_control/`, `diagnostics/`, `communication/`, `variants/` (per-variant configuration for S, M, L) | INPUT; NOT YET IMPLEMENTED (no firmware source) | Embedded owner | Safety-relevant code (fault manager, limits, state machine, watchdog) needs the Independent Electrical/Firmware Reviewer. See `firmware/README.md` |
 | `hardware/motor_controller/development_board/` | A0 development-board configuration and selected-board record | INPUT | Embedded owner |  |
-| `hardware/motor_controller/custom_pcb/` | `schematics/`, `pcb/`, `manufacturing/` for the A1 controller | INPUT (design source; none yet) | Embedded owner | Review E2 before fabrication |
+| `hardware/motor_controller/custom_pcb/` | `schematics/`, `pcb/`, `manufacturing/` for the A1 controller | INPUT; NOT YET IMPLEMENTED | Embedded owner | Review E2 before fabrication |
 | `hardware/power_stage/`, `sensing/`, `connectors/` | Inverter and protection notes, sensing, connector pin-outs | INPUT | Embedded owner | Power-stage sizing from motor current, never supply voltage alone |
-| `hardware/bom/ELECTRICAL_BOM.csv` | Electrical BOM, item prefix `EB-NNN` | INPUT | Embedded owner | Checked by `check_bom.py`. See `hardware/README.md` |
-| `docs/electronics/`, `docs/firmware/` | Electronics architecture, controller specification, bring-up; firmware architecture, motor control, calibration | AUTHORITATIVE for this repository's design; status per file | Embedded owner |  |
+| `hardware/bom/ELECTRICAL_BOM.csv` | Electrical BOM, item prefix `EB-NNN` | INPUT; IMPLEMENTED (item rows exist; the schema check passes) | Embedded owner | Checked by `check_bom.py`. See `hardware/README.md` |
+| `docs/electronics/`, `docs/firmware/` | Electronics architecture, controller specification, bring-up; firmware architecture, motor control, calibration | AUTHORITATIVE as the intended source of design detail; status per file, none approved | Embedded owner |  |
 | `communication/can/` | CAN firmware layer | INPUT (protocol is owned by the parent) | Embedded owner | Protocol is owned by the parent |
-| `tests/unit/`, `tests/firmware/`, `tests/hardware/` | Unit, firmware and hardware tests (empty today); `tests/commit_message_check/` tests the commit checker | EVIDENCE (empty today) | Embedded owner | Hardware tests only on a restrained, guarded, instrumented fixture |
-| `results/motor_control/` | Raw bring-up and characterisation evidence | EVIDENCE | Embedded owner | Record firmware commit and hardware configuration |
-| `scripts/check_bom.py` | Vendored BOM check | INPUT (vendored copy) | Project Lead | Change it in the parent, not here |
+| `tests/unit/`, `tests/firmware/`, `tests/hardware/` | Unit, firmware and hardware tests (empty today); `tests/commit_message_check/` tests the commit checker | EVIDENCE; NOT YET IMPLEMENTED (empty today) | Embedded owner | Hardware tests only on a restrained, guarded, instrumented fixture |
+| `results/motor_control/` | Raw bring-up and characterisation evidence | EVIDENCE; NOT YET IMPLEMENTED | Embedded owner | Record firmware commit and hardware configuration |
+| `scripts/check_bom.py` | Vendored BOM check | INPUT; IMPLEMENTED (vendored copy) | Project Lead | Change it in the parent, not here |
 | `scripts/status/` | `gen_status.py` (writes and validates `status/status.json`) and its tests | INPUT | Project Lead |  |
 | `scripts/security/check_commit_messages.py` | Commit message checker used by CI | INPUT | Project Lead / Security Owner |  |
 | `status/tasks.csv` | Task facts (ID, execution, readiness, commit) | INPUT | Embedded owner edits, Project Lead approves | Source for the status report |
@@ -184,11 +184,13 @@ Before copying any external code, add it to the third-party code register in `fi
 # This repository only
 git clone https://github.com/KritvaOS/kritva-actuator-embedded.git
 cd kritva-actuator-embedded
-# The whole actuator family (parent plus the four children as submodules)
+# The parent, with the child checkouts at the pointers the parent records
 git clone --recurse-submodules https://github.com/KritvaOS/kritva-actuator.git
 ```
 
-To push over SSH without changing the stored HTTPS URL, run once: `git config --global url."git@github.com:".pushInsteadOf "https://github.com/"`. Never put credentials in a remote URL. Work in this repository on a branch; do not push to the parent. Only the Project Lead updates the parent's pointer to a child commit, and the parent pins a reviewed commit (parent `docs/standards/SUBMODULE_WORKFLOW.md`). Released PCB manufacturing zips are meant to use Git LFS (`hardware/README.md`); no LFS rule exists in this repository yet, so agree one with the owner before committing large binaries.
+`--recurse-submodules` initialises the child checkouts at the pointers the parent records and needs read access to each child repository; which commit you get depends on the parent's current pointers.
+
+To push over SSH without changing the stored HTTPS URL, you can set a URL rewrite. The command below MODIFIES your global Git configuration (it affects every repository for your user): `git config --global url."git@github.com:".pushInsteadOf "https://github.com/"`. Inspect it with `git config --global --get-regexp pushinsteadof` and remove it with `git config --global --unset url."git@github.com:".pushInsteadOf`. To limit the rewrite to one repository, run the same command with `--local` inside it instead of `--global`. Never put credentials in a remote URL. Work in this repository on a branch; do not push to the parent. Only the Project Lead updates the parent's pointer to a child commit, and the parent is intended to pin a reviewed commit (parent `docs/standards/SUBMODULE_WORKFLOW.md`, PROPOSED). Released PCB manufacturing zips are meant to use Git LFS (`hardware/README.md`); no LFS rule exists in this repository yet, so agree one with the owner before committing large binaries.
 
 ### Review and safety workflow
 
@@ -202,7 +204,7 @@ To push over SSH without changing the stored HTTPS URL, run once: `git config --
 
 | Dependency | Direction | Kind | Contract | State |
 |---|---|---|---|---|
-| kritva-actuator (parent) | upstream | governance, requirements, interface | parent ICD, `CAN_PROTOCOL.md`, requirements, `planning/v1/DECISIONS.md` | ESTABLISHED as the owner of the interface; pointer pinned by the Project Lead |
+| kritva-actuator (parent) | upstream | governance, requirements, interface | parent ICD, `CAN_PROTOCOL.md`, requirements, `planning/v1/DECISIONS.md` | ESTABLISHED as the owner of the interface; the pointer is intended to be pinned by the Project Lead (current pointer not verified here) |
 | kritva-actuator-s, -m, -l | sibling | none specified | firmware configures per variant; mechanical design is theirs | PLANNED: no interface between the repositories is implemented, and the family layout is PROPOSED (ACT-DEC-024) |
 | kritva-program | upstream | governance and status | status schema 2.0 (`status/`) | planning-only reporting; this repository earns no program credit |
 | Engineering tools (KiCad, Arm GNU, CMake, STM32CubeG4, Unity, pytest, CAN tools) | upstream | tools | parent `TOOLFLOW_ELECTRONICS_EMBEDDED.md` | PROPOSED, not frozen |
@@ -227,7 +229,7 @@ Stage scope is held in the parent `planning/v1/ROADMAP.md` and `planning/v1/MILE
 | Mechanical design | Mounting and bench fixture only | Commercial planetary gearbox, independent output shaft and bearings, housing (HOLD lifted by ACT-DEC-029; Gate A still required) |
 | Validation | Bench tests on a restrained fixture | Elbow load case; Gates A/B/C with independent review (ACT-DEC-014, 015) |
 | Budget (provisional) | ₹10,000-₹15,000 | ₹20,000-₹30,000, cumulative including A0 |
-| Deliverable | Working motor-control platform with firmware, tests and documents | Validated actuator with CAD, BOM, firmware, test reports |
+| Deliverable | Working motor-control platform with firmware, tests and documents | Target: an actuator ready for validation, with CAD, BOM, firmware and test reports. "Validated" is reserved for a specific unit and configuration whose acceptance evidence is recorded, and depends on the firmware and hardware being built, physical testing, independent review and Gates A, B and C; software checks alone cannot satisfy it |
 
 Planning status (2026-10-18): A0 exits at P12 (10 Jan 2027), six weeks later than the original week-6 target (ACT-DEC-032). The M prototype checkpoint is P23 (22-28 Mar 2027), after Gate A (by P14) and a two-week release and procurement gap (ACT-DEC-033). The custom controller PCB and CAN firmware stay the A1 baseline; a development-board substitute is a reviewed deviation. Stage names above are the official names. Reforecast: `planning/v2/ROADMAP_48_WEEKS.md` (P1 = 19 Oct 2026; 58-week horizon ending 28 Nov 2027 is proposed, awaiting Project Lead confirmation).
 
@@ -244,15 +246,22 @@ Planning status (2026-10-18): A0 exits at P12 (10 Jan 2027), six weeks later tha
 | Dimension | Source record | Authority |
 |---|---|---|
 | Execution | `status/tasks.csv`, reported in `status/status.json` | The Embedded owner records it; the Project Lead approves |
-| Evidence | A record in `results/` (none exists yet) naming the commit, hardware revision, firmware version, test conditions and result, with its scope | The author records it; a reviewer other than the author checks it |
+| Evidence | None is recorded today (`results/` is empty). By type: a software test names the source commit, command and result; a calculation or simulation names the model, inputs and assumptions; a physical test names the hardware and firmware configuration, procedure, instruments and conditions, and result | The author records it; a reviewer other than the author checks it |
 | Acceptance | The parent's gate and audit records (`audit/`) | The independent reviewer and the Project Lead, never a status report |
 | Release readiness | The parent's Gates A, B and C | Project Lead with a qualified safety reviewer |
 
-Evidence has types that are not interchangeable (software test, calculation, simulation, bench measurement, independently accepted physical test). `status/status.json` carries no evidence today. A generated view is a snapshot that can lag its inputs, cannot approve its own work, and does not establish physical safety or program credit. Regenerate it with `python3 scripts/status/gen_status.py --root .`.
+Evidence has types that are not interchangeable (software test, calculation, simulation, bench measurement, independently accepted physical test). `status/status.json` carries no evidence today, every task's execution is NOT_STARTED, and the readiness values PLANNABLE and HARDWARE-BLOCKED describe planning constraints, not safety or release approval. A generated view is a snapshot that can lag its inputs, cannot approve its own work, and does not establish physical safety or program credit. Regenerate it with `python3 scripts/status/gen_status.py --root .`.
 
 ## 11. Build, Test, Regression and Validation
 
-These checks cover the electrical BOM schema, the status report, the commit checker and the secret scan. They are not a firmware build or a hardware test: neither exists yet, and a passing check does not close a gate.
+CI runs three separate workflows (below). None is a firmware build or a hardware test: neither exists yet, and a passing check does not close a gate.
+
+| Workflow | Trigger | What it runs |
+|---|---|---|
+| `checks` | push to `main`; pull requests | `make check` (electrical BOM schema and status only) |
+| `commit-message-check` | pull requests | the commit checker's unit tests, then the checker on the commits in the pull request (rejects session trailers and links only) |
+| `secret-scan` | push to `main`; pull requests; manual dispatch | gitleaks over the git history |
+
 
 | Check | Command | Effect | Runs in CI? |
 |---|---|---|---|
@@ -260,6 +269,7 @@ These checks cover the electrical BOM schema, the status report, the commit chec
 | Status report against `status/tasks.csv` | `make check-status` | check | yes (`checks`) |
 | Both of the above | `make check` | check | yes |
 | README standard | `make check-readme` | check | no, run locally |
+| README checker regression tests | `python3 -m unittest discover -s tests/readme_check -v` | check | no, run locally |
 | Commit checker tests | `python3 -m unittest discover -s tests/commit_message_check -v` | check | yes (`commit-message-check`) |
 | Status generator tests | `python3 -m unittest discover -s scripts/status -p "test_*.py" -v` | check | no, run locally |
 | Regenerate the status report | `python3 scripts/status/gen_status.py --root .` | generate (rewrites `status/status.json`) | no |
@@ -286,7 +296,7 @@ There is no firmware build job in this repository yet (it is planned with `firmw
 
 ## 12. Git Workflow and Review
 
-This repository's approved convention is the one below (a task-ID prefix, or `type(scope): summary`, described in the parent `docs/standards/PROGRAM_ALIGNMENT.md`, section 3). The Kritva commit standard in kritva-program (D-053: `type(scope): summary` with a `Task:` or `Tasks:` footer) is NOT adopted here (PD-019). Its checker is present (`scripts/security/check_commit_format.py`) and advisory only; what CI enforces is stated below.
+Repository convention: either subject form below (a task-ID prefix, or `type(scope): summary`; parent `docs/standards/PROGRAM_ALIGNMENT.md`, section 3). CI enforces only that a commit carries no `Claude-Session:` trailer or `claude.ai/code/session` link; neither subject form is checked by CI. Local style checks (`scripts/security/check_commit_format.py`) are advisory. The Kritva commit standard in kritva-program (D-053) is NOT adopted here (PD-019). `AGENTS.md` names the `type(scope): summary` form; the task-ID prefix is also accepted.
 
 ### Branch names
 
@@ -313,7 +323,7 @@ Suggested `type` values: `feat`, `fix`, `docs`, `test`, `chore`, `hw` (schematic
 
 What CI **does** enforce (`commit-message-check`): a commit must not contain a `Claude-Session:` trailer or a `claude.ai/code/session` link. A `Co-Authored-By:` line is allowed. Everything else above is a convention.
 
-To catch a rejected message before pushing, install the local hook once (from the repository root):
+Optionally, to catch a rejected message before pushing, install a local safeguard (it modifies `.git/hooks/commit-msg` in your clone and does not change CI policy):
 
 ```bash
 printf '#!/bin/sh\npython3 scripts/security/check_commit_messages.py --file "$1"\n' > .git/hooks/commit-msg
@@ -332,11 +342,11 @@ chmod +x .git/hooks/commit-msg
 
 This repository will hold firmware and electronics that drive a motor. It is experimental and not human-safe. Software checks, analytical calculations and simulation validate only the stated model, inputs and software properties. They do not establish physical safety, component suitability, design acceptance or readiness for human use, and they do not close a gate; physical test evidence, independent review and the applicable gate approvals are required separately. Simulated or mocked results are marked as such.
 
-The lifecycle status ACTIVE describes this repository, not hardware readiness. Lifting the mechanical HOLD (ACT-DEC-029) does not approve a design, waive a gate or authorise physical operation. The gates are defined in the parent (`planning/v1/MILESTONE.md` sections 6.4 and 8.4, records in `audit/release/`); this summary states what each controls for this repository and not its current status.
+The lifecycle status ACTIVE describes this repository, not hardware readiness. Lifting the mechanical HOLD (ACT-DEC-029) does not approve a design, waive a gate or authorise physical operation. The gates are defined in the parent: [planning/v1/MILESTONE.md](https://github.com/KritvaOS/kritva-actuator/blob/main/planning/v1/MILESTONE.md) (sections 6.4 and 8.4) and the records in the parent's `audit/release/`. The table below is this repository's gate summary, not the gate authority: it lists only the embedded contribution to each gate and not the complete closure criteria, and it does not state current status. Closing an embedded input does not close the parent gate or authorise the controlled activity; the parent record controls.
 
 | Gate | Controls | Required closed inputs (embedded) | Decision maker | Prohibited while open |
 |---|---|---|---|---|
-| A, design release | Release for fabrication | E1; E2 schematic stage for housing and connector interfaces | Project Lead | Fabricating the custom PCB, and the first loaded test |
+| A, design release | Release for fabrication | E1; E2 schematic stage for housing and connector interfaces | Project Lead | Procurement, design freeze and fabrication (including the custom PCB), and the first loaded test |
 | B, bench validation | Claims that bench performance targets are met | E3, F3 (bench scope) | Project Lead | Treating any controller or firmware performance as demonstrated |
 | C, safety and release | Safety sign-off and release | E4, F3 | Project Lead with a qualified safety reviewer | Release, and any use outside the restrained, guarded, instrumented fixture |
 
