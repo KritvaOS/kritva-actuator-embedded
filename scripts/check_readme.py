@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Check README.md against the Kritva README standard (kritva-program D-055).
 
-Proprietary and confidential. Copyright (c) 2026 Kritvaos. All rights reserved.
+Copyright (c) 2026 Kritvaos. Licensed under the Apache License, Version 2.0 (see LICENSE).
 
   check_readme.py README.md [--root DIR]
 

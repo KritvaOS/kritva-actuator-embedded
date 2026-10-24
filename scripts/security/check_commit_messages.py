@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Reject commit messages that carry AI-session metadata.
 
-Proprietary and confidential. Copyright (c) 2026 Kritvaos. All rights reserved.
+Copyright (c) 2026 Kritvaos. Licensed under the Apache License, Version 2.0 (see LICENSE).
 
 Forbidden in any commit message: a 'Claude-Session:' trailer and any claude.ai/code/session link.
 Modes:

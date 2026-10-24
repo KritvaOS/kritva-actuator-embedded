@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate and check status/status.json (kritva-program status schema 2.0).
 
-Proprietary and confidential. Copyright (c) 2026 Kritvaos. All rights reserved.
+Copyright (c) 2026 Kritvaos. Licensed under the Apache License, Version 2.0 (see LICENSE).
 
 Reports task FACTS only (D-011): execution, git_sync, readiness, evidence. Review and acceptance live
 in kritva-program approvals.json. Task facts come from ``status/tasks.csv`` (columns: task_id, legacy_id,

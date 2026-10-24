@@ -9,7 +9,7 @@ This policy covers reproducible security vulnerabilities in the Kritva Actuator 
 
 ## 2. Do not disclose unfixed vulnerabilities publicly
 
-This is a private repository. Its GitHub setting is temporarily public (D-028) and the owner returns it to private (D-037). Whatever its visibility at the time, please do not copy details of an unpatched vulnerability into a public issue, pull request, discussion or post, or into any other public place.
+This is a public repository (ACT-DEC-034 in kritva-actuator). Because anyone can read it, please do not copy details of an unpatched vulnerability into a public issue, pull request, discussion or post, or into any other public place.
 
 ## 3. Reporting
 

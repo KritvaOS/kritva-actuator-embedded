@@ -9,7 +9,7 @@
 | Document owner | Electronics/Embedded Intern |
 | Reviewer / Approver | Independent Electrical/Firmware Reviewer / Project Lead |
 | Applies to | A0, A1, A2 |
-| Classification | Proprietary and confidential |
+| Classification | Public (Apache-2.0, see `LICENSE`) |
 
 > **Status note.** This architecture is proposed for review at F1. It is written MCU-neutral, with the STM32G4 family as the proposed target (ACT-DEC-004). Loop rates and timing figures are proposals until they are measured on the target.
 
