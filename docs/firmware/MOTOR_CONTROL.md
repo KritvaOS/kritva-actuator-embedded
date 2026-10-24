@@ -9,7 +9,7 @@
 | Document owner | Electronics/Embedded Intern |
 | Reviewer / Approver | Independent Electrical/Firmware Reviewer / Project Lead |
 | Applies to | A0, A1 |
-| Classification | Proprietary and confidential |
+| Classification | Public (Apache-2.0, see `LICENSE`) |
 
 > **Status note.** This is the proposed control design. Gains are computed from the measured motor parameters (R, L, Kt, J) once the motor is selected. The example numbers below are illustrative only.
 

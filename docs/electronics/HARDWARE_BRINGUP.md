@@ -9,7 +9,7 @@
 | Document owner | Electronics/Embedded Intern |
 | Reviewer / Approver | Independent Electrical/Firmware Reviewer / Project Lead |
 | Applies to | A0 (development board), A1 (custom PCB) |
-| Classification | Proprietary and confidential |
+| Classification | Public (Apache-2.0, see `LICENSE`) |
 
 > **Status note.** This is a proposed procedure. Current limits and thresholds are TBC with the selected board and motor. **Do not skip steps or increase limits until the previous step passes and is recorded.** It follows the staged approach in SAFETY_REQUIREMENTS (SAF-REQ-063/066).
 

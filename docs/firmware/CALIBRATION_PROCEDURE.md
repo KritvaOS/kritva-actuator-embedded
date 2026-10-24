@@ -9,7 +9,7 @@
 | Document owner | Electronics/Embedded Intern |
 | Reviewer / Approver | Independent Electrical/Firmware Reviewer / Project Lead |
 | Applies to | A0 (motor), A1 (motor + output) |
-| Classification | Proprietary and confidential |
+| Classification | Public (Apache-2.0, see `LICENSE`) |
 
 > **Status note.** This procedure is proposed. Calibration currents and tolerances are TBC with the selected motor and encoders. Calibration is a recorded hazard (HAZ-015), so it must follow this procedure exactly.
 

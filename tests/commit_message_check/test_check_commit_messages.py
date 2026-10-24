@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Unit tests for the commit message checker.
 
-Proprietary and confidential. Copyright (c) 2026 Kritvaos. All rights reserved.
+Copyright (c) 2026 Kritvaos. Licensed under the Apache License, Version 2.0 (see LICENSE).
 """
 
 import os

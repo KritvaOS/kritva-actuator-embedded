@@ -9,7 +9,7 @@
 | Document owner | Electronics/Embedded Intern |
 | Reviewer / Approver | Independent Electrical/Firmware Reviewer / Project Lead |
 | Applies to | A0 (development board), A1 (custom PCB) |
-| Classification | Proprietary and confidential |
+| Classification | Public (Apache-2.0, see `LICENSE`) |
 
 > **Status note.** The MCU family (STM32G4 proposed, ACT-DEC-004), the A0 development board (ACT-DEC-005) and all component choices are **proposed**. Part numbers are candidates and must be verified against their datasheets. Ratings depend on the motor still to be selected.
 

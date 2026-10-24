@@ -9,7 +9,7 @@
 | Document owner | Electronics/Embedded Intern |
 | Reviewer / Approver | Independent Electrical/Firmware Reviewer / Project Lead |
 | Applies to | A1 custom PCB (A0 board checked against the same table) |
-| Classification | Proprietary and confidential |
+| Classification | Public (Apache-2.0, see `LICENSE`) |
 
 > **Status note.** This is a target specification for the A1 controller PCB. Values marked TBC depend on the selected motor (Kt, R, L, pole pairs) and are recalculated in ACT-01-001/ACT-01-005. The A0 development board is checked against the same table, and any shortfall is recorded as a limitation.
 
